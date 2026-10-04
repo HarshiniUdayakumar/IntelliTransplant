@@ -1,0 +1,56 @@
+IntelliTransplant/
+│
+├── backend/
+│   │
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   │
+│   │   ├── core/
+│   │   │   ├── __init__.py
+│   │   │   └── config.py
+│   │   │
+│   │   ├── database/
+│   │   │   ├── __init__.py
+│   │   │   ├── connection.py
+│   │   │   └── models.py
+│   │   │
+│   │   ├── schemas/
+│   │   │   ├── __init__.py
+│   │   │   ├── organ.py
+│   │   │   ├── recipient.py
+│   │   │   ├── hospital.py
+│   │   │   └── transport.py
+│   │   │
+│   │   ├── routes/
+│   │   │   ├── __init__.py
+│   │   │   ├── organ_routes.py
+│   │   │   ├── recipient_routes.py
+│   │   │   ├── hospital_routes.py
+│   │   │   └── transport_routes.py
+│   │   │
+│   │   └── ai_engine/
+│   │       ├── __init__.py
+│   │       ├── csp_engine.py
+│   │       ├── astar_engine.py
+│   │       ├── ucs_engine.py
+│   │       ├── knowledge_engine.py
+│   │       ├── bayesian_engine.py
+│   │       └── coordination_agent.py
+│   │
+│   ├── tests/
+│   │   └── __init__.py
+│   │
+│   ├── requirements.txt
+│   └── transplant.db
+│
+├── frontend/
+│
+├── docs/
+│   ├── project_workflow.md
+│   ├── ai_algorithms.md
+│   └── database_design.md
+│
+├── .gitignore
+└── README.md
+
