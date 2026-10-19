@@ -116,15 +116,15 @@ def is_valid_assignment(
 # BACKTRACKING CSP
 # --------------------------------------------------
 
-def backtrack(
-    organs: List[Dict],
-    recipients: List[Dict],
-    organ_index: int = 0,
-    current_assignment: List[Dict] | None = None,
-    assigned_recipient_ids: List[int] | None = None,
-    solutions: List[List[Dict]] | None = None
-) -> List[List[Dict]]:
 
+def backtrack(
+    organs,
+    recipients,
+    organ_index=0,
+    current_assignment=None,
+    assigned_recipient_ids=None,
+    solutions=None,
+):
     if current_assignment is None:
         current_assignment = []
 
@@ -134,63 +134,50 @@ def backtrack(
     if solutions is None:
         solutions = []
 
-    # Base case:
-    # All organs have been processed
+    # All organs have been considered
     if organ_index >= len(organs):
-
-        solutions.append(
-            current_assignment.copy()
-        )
-
+        solutions.append(current_assignment.copy())
         return solutions
 
     current_organ = organs[organ_index]
 
-    # Try every recipient for this organ
+    # Option 1: Try assigning this organ to a valid recipient
     for recipient in recipients:
-
-        # Check CSP constraints
         if is_valid_assignment(
-            current_organ,
-            recipient,
-            assigned_recipient_ids
+            current_organ, recipient, assigned_recipient_ids
         ):
-
-            # Calculate compatibility score
-            score = calculate_match_score(
-                current_organ,
-                recipient
-            )
+            score = calculate_match_score(current_organ, recipient)
 
             assignment = {
                 "organ_id": current_organ["id"],
                 "recipient_id": recipient["id"],
-                "score": score
+                "score": score,
             }
 
-            # Make assignment
-            current_assignment.append(
-                assignment
-            )
+            current_assignment.append(assignment)
+            assigned_recipient_ids.append(recipient["id"])
 
-            assigned_recipient_ids.append(
-                recipient["id"]
-            )
-
-            # Move to next organ
             backtrack(
                 organs,
                 recipients,
                 organ_index + 1,
                 current_assignment,
                 assigned_recipient_ids,
-                solutions
+                solutions,
             )
 
-            # BACKTRACK
             current_assignment.pop()
-
             assigned_recipient_ids.pop()
+
+    # Option 2: Skip this organ and continue with the others
+    backtrack(
+        organs,
+        recipients,
+        organ_index + 1,
+        current_assignment,
+        assigned_recipient_ids,
+        solutions,
+    )
 
     return solutions
 

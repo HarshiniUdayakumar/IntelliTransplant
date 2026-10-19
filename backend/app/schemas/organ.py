@@ -6,7 +6,8 @@ from pydantic import BaseModel, ConfigDict
 class OrganCreate(BaseModel):
     organ_type: str
     blood_group: str
-    donor_id: str
+    donor_name: str
+    donor_contact: str | None = None
     hospital_id: int
 
 
@@ -15,6 +16,8 @@ class OrganResponse(BaseModel):
     organ_type: str
     blood_group: str
     donor_id: str
+    donor_name: str
+    donor_contact: str | None
     hospital_id: int
     status: str
     created_at: datetime

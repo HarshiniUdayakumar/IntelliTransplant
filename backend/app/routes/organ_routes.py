@@ -5,6 +5,7 @@ from app.db.connection import get_db
 from app.db.models import Organ
 from app.schemas.organ import OrganCreate, OrganResponse
 
+
 router = APIRouter(
     prefix="/organs",
     tags=["Organs"]
@@ -16,10 +17,28 @@ def create_organ(
     organ_data: OrganCreate,
     db: Session = Depends(get_db)
 ):
+    # Get the latest organ ID
+    last_organ = (
+        db.query(Organ)
+        .order_by(Organ.id.desc())
+        .first()
+    )
+
+    # Generate donor ID
+    if last_organ:
+        donor_number = last_organ.id + 1
+    else:
+        donor_number = 1
+
+    donor_id = f"DNR-{donor_number:04d}"
+
+    # Create new organ
     new_organ = Organ(
         organ_type=organ_data.organ_type,
         blood_group=organ_data.blood_group,
-        donor_id=organ_data.donor_id,
+        donor_id=donor_id,
+        donor_name=organ_data.donor_name,
+        donor_contact=organ_data.donor_contact,
         hospital_id=organ_data.hospital_id
     )
 
@@ -31,5 +50,7 @@ def create_organ(
 
 
 @router.get("/", response_model=list[OrganResponse])
-def get_organs(db: Session = Depends(get_db)):
+def get_organs(
+    db: Session = Depends(get_db)
+):
     return db.query(Organ).all()

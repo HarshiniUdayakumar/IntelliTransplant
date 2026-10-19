@@ -1,0 +1,267 @@
+
+.hospitals-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: var(--text-primary, #1e293b);
+}
+
+.hospital-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.hospital-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 22px;
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 14px;
+}
+
+.hospital-stat-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #e8f5ef;
+  font-size: 25px;
+}
+
+.hospital-stat-card p {
+  margin: 0 0 8px;
+  color: var(--text-secondary, #64748b);
+  font-size: 14px;
+}
+
+.hospital-stat-card h2 {
+  margin: 0;
+  font-size: 27px;
+}
+
+.hospital-panel {
+  padding: 24px;
+  background: var(--card-bg, #ffffff);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 16px;
+  min-width: 0;
+}
+
+.hospital-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.hospital-panel-heading h2 {
+  margin: 0 0 7px;
+  font-size: 20px;
+}
+
+.hospital-panel-heading p {
+  margin: 0;
+  color: var(--text-secondary, #64748b);
+  font-size: 14px;
+}
+
+.hospital-heading-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  background: #e8f5ef;
+  color: #16794b;
+  border-radius: 12px;
+  font-size: 27px;
+}
+
+.hospital-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.hospital-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.hospital-field label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.hospital-field input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color, #cbd5e1);
+  border-radius: 9px;
+  background: var(--input-bg, #ffffff);
+  color: var(--text-primary, #1e293b);
+  font: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.hospital-field input:focus {
+  border-color: #16865a;
+  box-shadow: 0 0 0 3px rgba(22, 134, 90, 0.12);
+}
+
+.hospital-full-width {
+  grid-column: 1 / -1;
+}
+
+.hospital-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.hospital-submit-btn,
+.hospital-reset-btn {
+  padding: 12px 18px;
+  border-radius: 9px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.hospital-submit-btn {
+  border: 1px solid #16794b;
+  background: #16794b;
+  color: #ffffff;
+}
+
+.hospital-submit-btn:hover {
+  background: #11643d;
+}
+
+.hospital-submit-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.hospital-reset-btn {
+  border: 1px solid var(--border-color, #cbd5e1);
+  background: transparent;
+  color: var(--text-primary, #334155);
+}
+
+.hospital-message {
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border-radius: 9px;
+  font-size: 14px;
+}
+
+.hospital-error {
+  color: #b42318;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+}
+
+.hospital-success {
+  color: #16794b;
+  background: #ecfdf3;
+  border: 1px solid #abefc6;
+}
+
+.hospital-count {
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #e8f5ef;
+  color: #16794b;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.hospital-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.hospital-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.hospital-table th,
+.hospital-table td {
+  padding: 15px 13px;
+  border-bottom: 1px solid var(--border-color, #e2e8f0);
+  white-space: nowrap;
+}
+
+.hospital-table th {
+  color: var(--text-secondary, #64748b);
+  background: var(--table-header-bg, #f8fafc);
+  font-weight: 600;
+}
+
+.hospital-table tbody tr:hover {
+  background: var(--table-hover-bg, #f8fafc);
+}
+
+.hospital-name-cell {
+  font-weight: 600;
+}
+
+.hospital-empty {
+  text-align: center;
+  padding: 36px 16px;
+  color: var(--text-secondary, #64748b);
+}
+
+.hospital-empty span {
+  font-size: 32px;
+}
+
+.hospital-empty h3 {
+  color: var(--text-primary, #334155);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 700px) {
+  .hospitals-content {
+    padding: 16px;
+  }
+
+  .hospital-stats,
+  .hospital-form {
+    grid-template-columns: 1fr;
+  }
+
+  .hospital-full-width {
+    grid-column: auto;
+  }
+
+  .hospital-panel {
+    padding: 18px;
+  }
+
+  .hospital-form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .hospital-form-actions button {
+    width: 100%;
+  }
+
+  .hospital-panel-heading {
+    align-items: flex-start;
+  }
+}

@@ -18,7 +18,12 @@ class Organ(Base):
     id = Column(Integer, primary_key=True, index=True)
     organ_type = Column(String(50), nullable=False)
     blood_group = Column(String(5), nullable=False)
+
+    # Donor details
     donor_id = Column(String(50), nullable=False)
+    donor_name = Column(String(100), nullable=True)
+    donor_contact = Column(String(20), nullable=True)
+
     hospital_id = Column(Integer, nullable=False)
     status = Column(String(30), default="available")
     created_at = Column(DateTime, default=datetime.utcnow)
